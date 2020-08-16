@@ -3,10 +3,12 @@ from Environment.base_env import *
 
 class Search(Env):
     """
-    This is the environment for a search episode. The goal of this environment is to reach the region target
-    picked by the target selector environment. It does this by repeatedly picking local targets closest to the
-    region target, navigating to that local target, and resetting the local map to be centered on the drone, and
-    repeating this process until the local target is the region target
+    This Env subclass is the environment for a search episode. The goal in this environment it to reach the region target. 
+    In a full test, this target is chosen in the target selector environment. To reach the current target, this environment 
+    sets local targets. The drone navigates within a 25x25 grid (its local map). The local target is the cell in this local 
+    map closest to the region target. When the drone reaches the local target, the local map resets (placing the drone in 
+    the center) and a new local target is set. This process continues until the region target is reached. We define “reached” 
+    as having appeared within the drone’s vision. 
     """
     def __init__(self, visits, map_obj):
         # Define initial targets
