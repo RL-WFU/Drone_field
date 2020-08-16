@@ -41,7 +41,6 @@ class Trace(Env):
         state = np.append(state, 1)
         state = np.append(state, 1)
         state = np.append(state, 1)
-        # state = np.append(state, self.calculate_covered('region'))
         state = np.reshape(state, [1, 1, self.vision_size + 4])
 
         self.__class__.row_position = row
@@ -102,8 +101,6 @@ class Trace(Env):
 
         self.__class__.row_position = next_row
         self.__class__.col_position = next_col
-        # print(self.row_position, self.col_position)
-        # print(self.local_target)
 
         image = self.get_classified_drone_image()
 
@@ -115,7 +112,6 @@ class Trace(Env):
         self.visited_position()
         self.map_obj.update_map(image, self.__class__.row_position, self.__class__.col_position)
         self.__class__.map = self.map_obj.map
-        #self.update_map(image)
 
         #Choose a new local map if it leaves the current one
         if (self.__class__.row_position < self.local_map_lower_row or self.__class__.col_position <
@@ -133,7 +129,6 @@ class Trace(Env):
         state = np.append(state, self.__class__.visited[self.__class__.row_position, self.__class__.col_position + 1])
         state = np.append(state, self.__class__.visited[self.__class__.row_position - 1, self.__class__.col_position])
         state = np.append(state, self.__class__.visited[self.__class__.row_position, self.__class__.col_position + 1])
-        # state = np.append(state, self.calculate_covered('region'))
         state = np.reshape(state, [1, 1, self.vision_size + 4])
 
         return state, flattened_local_map, reward, self.done
@@ -165,8 +160,7 @@ class Trace(Env):
         :return: local_map
         """
         local_map = deepcopy(self.map_obj.map[self.local_map_lower_row:self.local_map_upper_row + 1,
-                             self.local_map_lower_col:self.local_map_upper_col + 1])
-        #local_map = deepcopy(self.__class__.map[self.local_map_lower_row:self.local_map_upper_row+1, self.local_map_lower_col:self.local_map_upper_col+1])
+                             self.local_map_lower_col:self.local_map_upper_col + 1]
         return local_map
 
     def next_local_map(self):
