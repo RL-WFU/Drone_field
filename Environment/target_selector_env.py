@@ -3,10 +3,10 @@ from Environment.base_env import *
 
 class SelectTarget(Env):
     """
-    This environment is in charge of picking the next region the drone should navigate to
-    It is called either at the end of a trace episode, or when trace is not successful within the current target
+    This environment determines the next region the drone should navigate to.
+    It is called either at the end of a trace episode or when trace is not successful within its current region.
     It uses the discovered mining in each region, the percent of the region already covered, and the
-    euclidean distance to each region to decide which region to navigate to
+    euclidean distance to each region to decide which region to navigate to next.
     """
     def __init__(self, visits):
         # Set simulation
