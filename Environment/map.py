@@ -6,10 +6,10 @@ class Map:
     This map is numRows x numCols, and each cell contains the probability of mining in that cell, but
     only if the drone has seen that cell (the cell has been in the drone's 5x5 vision area at least once)
     Comparing this map with the ground-truth map has allowed us to see the area the drone is covering
-    This map is also accessed to provide the drone with local map information in search and trace. To do so,
-    we take the section of this map corresponding to the drone's current region, and pass that through the network
-    as the local map. So, the drone has access to the information it has gathered in its current region at each
-    timestep
+    This map is also accessed to provide the drone with local map information in search and trace. The 25x25 cell section of 
+    this map that corresponds with the drone’s current region is passed through the network as the local map. Through this, 
+    the drone has access to the information it has gathered in its local region at each timestep. 
+
     Like visited.py, there are two maps, the full one, and the search map. The full map is only reset at the start
     of each larger episode, while the search one is reset at the start of each search episode. This is because, like visited,
     search performs better when it is less overwhelmed with prior information, while trace can effectively use
