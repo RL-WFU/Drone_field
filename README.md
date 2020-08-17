@@ -19,7 +19,7 @@ can be found in `Testing/testing_helper.py`. Details of the episode and subtasks
 
 ## The Environment 
 
-Episodes are run according to the environments for each subtask. At its most fundamental level, the environment provides the state and reward for the agent 
+Episodes are run according to the environment for each subtask. At its most fundamental level, the environment provides the state and reward for the agent 
 at each timestep based on the action it takes. The environments for the subtasks can be found in the `Environment` folder. Each subtask environment is a subclass of 
 the base Env class found in `base_env.py`. The specifics of these environments are included as comments in their respective files. 
 
