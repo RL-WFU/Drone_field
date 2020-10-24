@@ -1,4 +1,4 @@
-# Drone_final
+# Drone_field
 *Final Drone Repository Ashley Peake and Joe McCalmon WFU 2020*
 
 This repository contains everything neccessary to run our drone navigation algorithm based on two deep learning networks.
